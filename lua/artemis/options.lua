@@ -1,5 +1,6 @@
 vim.o.hlsearch = true             -- highlight on search
 vim.wo.number = true              -- linenumbers
+vim.wo.relativenumber = true
 vim.o.breakindent = false         -- do not add indents for lines that are too long to fit on the
                                   -- screen. Might change later
 vim.o.undofile = true
