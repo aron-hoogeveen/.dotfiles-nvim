@@ -1,6 +1,14 @@
 local map = vim.keymap.set
+
+
 ----------------------------------------------------------------------------------------------------
---- Telescope
+--- 
+--- ████████ ███████ ██      ███████ ███████  ██████  ██████  ██████  ███████ 
+---    ██    ██      ██      ██      ██      ██      ██    ██ ██   ██ ██      
+---    ██    █████   ██      █████   ███████ ██      ██    ██ ██████  █████   
+---    ██    ██      ██      ██           ██ ██      ██    ██ ██      ██      
+---    ██    ███████ ███████ ███████ ███████  ██████  ██████  ██      ███████ 
+---
 ----------------------------------------------------------------------------------------------------
 map('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 map('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -29,11 +37,16 @@ map('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on G
 map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 map('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
--- better up/down
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+----------------------------------------------------------------------------------------------------
+---
+--- ██     ██ ██ ███    ██ ██████   ██████  ██     ██ ███████ 
+--- ██     ██ ██ ████   ██ ██   ██ ██    ██ ██     ██ ██      
+--- ██  █  ██ ██ ██ ██  ██ ██   ██ ██    ██ ██  █  ██ ███████ 
+--- ██ ███ ██ ██ ██  ██ ██ ██   ██ ██    ██ ██ ███ ██      ██ 
+---  ███ ███  ██ ██   ████ ██████   ██████   ███ ███  ███████ 
+---
+----------------------------------------------------------------------------------------------------
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
@@ -46,6 +59,75 @@ map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- windows
+map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+
+
+----------------------------------------------------------------------------------------------------
+---
+--- ██████  ██    ██ ███████ ███████ ███████ ██████  ███████ 
+--- ██   ██ ██    ██ ██      ██      ██      ██   ██ ██      
+--- ██████  ██    ██ █████   █████   █████   ██████  ███████ 
+--- ██   ██ ██    ██ ██      ██      ██      ██   ██      ██ 
+--- ██████   ██████  ██      ██      ███████ ██   ██ ███████ 
+---
+----------------------------------------------------------------------------------------------------
+
+-- save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- new empty buffer
+map({ "i", "x", "n", "s" }, "<C-n>", "<cmd>new<cr>", { desc = "Open new empty buffer" })
+
+-- quit all
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+
+
+----------------------------------------------------------------------------------------------------
+---
+--- ████████ ███████ ██████  ███    ███ ██ ███    ██  █████  ██      
+---    ██    ██      ██   ██ ████  ████ ██ ████   ██ ██   ██ ██      
+---    ██    █████   ██████  ██ ████ ██ ██ ██ ██  ██ ███████ ██      
+---    ██    ██      ██   ██ ██  ██  ██ ██ ██  ██ ██ ██   ██ ██      
+---    ██    ███████ ██   ██ ██      ██ ██ ██   ████ ██   ██ ███████ 
+---
+----------------------------------------------------------------------------------------------------
+
+-- floating terminal
+-- TODO make the terminal floating
+map("n", "<c-/>", "<cmd>ToggleTerm<cr>", { desc = "Terminal" })
+
+-- Terminal Mappings
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+
+
+----------------------------------------------------------------------------------------------------
+--- 
+--- ██    ██ ███    ██ ███████  ██████  ██████  ████████ ███████ ██████  
+--- ██    ██ ████   ██ ██      ██    ██ ██   ██    ██    ██      ██   ██ 
+--- ██    ██ ██ ██  ██ ███████ ██    ██ ██████     ██    █████   ██   ██ 
+--- ██    ██ ██  ██ ██      ██ ██    ██ ██   ██    ██    ██      ██   ██ 
+---  ██████  ██   ████ ███████  ██████  ██   ██    ██    ███████ ██████  
+--- 
+----------------------------------------------------------------------------------------------------
+
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -71,39 +153,9 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
--- save file
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
-
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-
--- new file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- floating terminal
--- TODO make the terminal floating
-map("n", "<c-/>", "<cmd>ToggleTerm<cr>", { desc = "Terminal" })
-
--- Terminal Mappings
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
-map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
-map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
-map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
-map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
-
--- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
