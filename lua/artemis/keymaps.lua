@@ -12,6 +12,7 @@ local map = vim.keymap.set
 ----------------------------------------------------------------------------------------------------
 
 map("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]iles" })
+map("n", "<leader>fh", function() require("telescope.builtin").find_files({hidden = true}) end, { desc = "[F]ind files, include [H]idden" })
 map("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "[F]uzzy search [G]it files" })
 map("n", "<leader>fr", require("telescope.builtin").oldfiles, { desc = "[F]ind [R]ecently opened files" })
 map('n', '<leader>/', function()
