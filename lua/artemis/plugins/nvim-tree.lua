@@ -1,3 +1,4 @@
+-- file explorer
 return {
   'nvim-tree/nvim-tree.lua',
   version = "*",

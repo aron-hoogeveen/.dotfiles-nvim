@@ -15,6 +15,7 @@ map("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind
 map("n", "<leader>fh", function() require("telescope.builtin").find_files({hidden = true}) end, { desc = "[F]ind files, include [H]idden" })
 map("n", "<leader>fg", require("telescope.builtin").git_files, { desc = "[F]uzzy search [G]it files" })
 map("n", "<leader>fr", require("telescope.builtin").oldfiles, { desc = "[F]ind [R]ecently opened files" })
+map("n", "<leader>fa", require("telescope.builtin").live_grep, { desc = "[F]ind text in [a]ll files in the cwd" })
 map('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -101,6 +102,18 @@ map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 
 ----------------------------------------------------------------------------------------------------
+--- ██████  ██  █████   ██████  ███    ██  ██████  ███████ ████████ ██  ██████ ███████ 
+--- ██   ██ ██ ██   ██ ██       ████   ██ ██    ██ ██         ██    ██ ██      ██      
+--- ██   ██ ██ ███████ ██   ███ ██ ██  ██ ██    ██ ███████    ██    ██ ██      ███████ 
+--- ██   ██ ██ ██   ██ ██    ██ ██  ██ ██ ██    ██      ██    ██    ██ ██           ██ 
+--- ██████  ██ ██   ██  ██████  ██   ████  ██████  ███████    ██    ██  ██████ ███████ 
+----------------------------------------------------------------------------------------------------
+
+map("n", "<leader>dd", function() vim.diagnostic.open_float() end, { desc = "Open floating [d]iagnostics window" })
+-- map("n", "<leader>ds", function() vim.diagnostic.
+
+
+----------------------------------------------------------------------------------------------------
 --- 
 --- ██    ██ ███    ██ ███████  ██████  ██████  ████████ ███████ ██████  
 --- ██    ██ ████   ██ ██      ██    ██ ██   ██    ██    ██      ██   ██ 
@@ -149,5 +162,4 @@ map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Nvim-Tree
-map("n", "<C-e>", "<cmd>NvimTreeFocus<cr>", { desc = "Open the tree if it is closed, and then focus on the tree.", remap = true })
-
+map("n", "<C-e>", "<cmd>NvimTreeFocus<cr>", { desc = "Open the tree if it is closed, and then focus on the tree", remap = true })
