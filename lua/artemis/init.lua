@@ -2,6 +2,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Uncomment the following line if using nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local autocmd = vim.api.nvim_create_autocmd
 local map = vim.keymap.set
 
@@ -9,6 +13,8 @@ require("artemis.options")
 
 -- plugin manager
 require("artemis.lazy_init")
+
+require("colorizer").setup()
 
 -- keymaps
 require("artemis.keymaps")
