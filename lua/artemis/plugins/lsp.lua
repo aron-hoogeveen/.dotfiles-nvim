@@ -12,7 +12,7 @@ return {
                     -- DO NOT FORGET TO ADD THEM TO THE SOURCES USED FOR NVIM-CMP
                     -- See the line with "sources = cmp.config.sources({"
                     "lua_ls",
-                    "ts_ls"
+                    "ts_ls",
                 }
             },
             dependencies = {
@@ -41,7 +41,7 @@ return {
             },
             mapping = cmp.mapping.preset.insert({
                 ["<C-Space>"] = cmp.mapping.complete(),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
